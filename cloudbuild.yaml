@@ -1,0 +1,46 @@
+steps:
+  # Install dependencies 
+  - name: python
+    entrypoint: pip
+    args: ["install", "-r", "requirements.txt", "--user"]
+
+  # Inspect python container
+  - name: python
+    entrypoint: pwd
+    # Will output /builder/home/.local/bin/
+
+  # Check directory
+  - name: bash
+    args:
+      - "-c"
+      - |
+        ls
+
+  # Run nbconvert library to convert notebook into Python script
+  - name: python
+    entrypoint: /builder/home/.local/bin/jupyter
+    args: ["nbconvert", "--to", "notebook", "--execute", "${_NOTEBOOK_NAME}"] 
+  
+  # Check directory
+  - name: bash
+    args:
+      - "-c"
+      - |
+        ls
+
+substitutions:
+    # Added them in the cloud build trigger as well
+    _NOTEBOOK_NAME: inventory_pipeline.ipynb        # default value
+    _ARTIFACT_BUCKET: rax-datascience-dev-modelfactory # default value
+
+options:
+    dynamic_substitutions: true
+
+artifacts:
+  objects:
+    location: 'gs://${_ARTIFACT_BUCKET}/'
+    paths: ['inventory_pipeline.ipynb']
+
+#steps:
+#  - name: gcr.io/cloud-builders/gsutil
+#    args: ["mv", "gs://${_ARTIFACT_BUCKET}/Python_Code/*.json", "gs://${_ARTIFACT_BUCKET}/Conversion_artifcats/"]
