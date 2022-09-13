@@ -39,4 +39,4 @@ steps:
 artifacts:
   objects:
     location: 'gs://${_ARTIFACT_BUCKET}/'
-    paths: ['inventory_pipeline.ipynb']
+    paths: ['${_NOTEBOOK_NAME}']
