@@ -9,7 +9,7 @@ steps:
     entrypoint: pwd
     # Will output /builder/home/.local/bin/
 
-  # Check directory if needed
+  # Check directory
   - name: bash
     args:
       - "-c"
@@ -21,7 +21,7 @@ steps:
     entrypoint: /builder/home/.local/bin/jupyter
     args: ["nbconvert", "--to", "notebook", "--execute", "${_NOTEBOOK_NAME}"] 
   
-  # Check directory if needed
+  # Check directory
   - name: bash
     args:
       - "-c"
