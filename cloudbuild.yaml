@@ -28,6 +28,7 @@ steps:
       - |
         ls
 
+
 #substitutions:
 #    # Added them in the cloud build trigger as well
 #    _NOTEBOOK_NAME: inventory_pipeline.ipynb        # default value
