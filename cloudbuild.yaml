@@ -54,4 +54,5 @@ serviceAccount: "40046533665-compute@developer.gserviceaccount.com"
 artifacts:
   objects:
     location: 'gs://${_ARTIFACT_BUCKET}/'
-    paths: ['${_NOTEBOOK_NAME}']
+    # paths: ['${_NOTEBOOK_NAME}']
+    paths: ['forecast_eval_component.yaml', 'inventory_pipeline.ipynb', 'inventory_pipeline.nbconvert.ipynb', 'send_gmail_component.yaml', 'sql_query_component.yaml', 'tab_forecast_pipeline.json']
