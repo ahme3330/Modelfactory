@@ -42,4 +42,4 @@ serviceAccount: "sa-ds-mf-tf-pv002@rax-datascience-dev.iam.gserviceaccount.com"
 artifacts:
   objects:
     location: 'gs://${_ARTIFACT_BUCKET}/'
-    paths: ['${_NOTEBOOK_NAME}']
+    paths: ['${_NOTEBOOK_NAME}', '*.out']
