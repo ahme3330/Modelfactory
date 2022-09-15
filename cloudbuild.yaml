@@ -16,6 +16,11 @@ steps:
       - |
         ls
 
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'gcloud'
+    # gcloud compute regions list
+    args: ['compute','regions', 'list']
+
   # Run nbconvert library to convert notebook into Python script
   - name: python
     entrypoint: /builder/home/.local/bin/jupyter
