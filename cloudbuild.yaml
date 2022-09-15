@@ -33,7 +33,10 @@ steps:
 #    _NOTEBOOK_NAME: inventory_pipeline.ipynb           # default value
 #    _ARTIFACT_BUCKET: rax-datascience-dev-modelfactory # default value
 
-#options:
+options:
+serviceAccount: "40046533665-compute@developer.gserviceaccount.com"
+# 40046533665-compute@developer.gserviceaccount.com
+# sa-ds-mf-tf-pv002@rax-datascience-dev.iam.gserviceaccount.com
 #    dynamic_substitutions: true
 
 artifacts:
