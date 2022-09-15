@@ -19,7 +19,7 @@ steps:
   # Run nbconvert library to convert notebook into Python script
   - name: python
     entrypoint: /builder/home/.local/bin/jupyter
-    args: ["nbconvert", "--to", "notebook", "--execute", "${_NOTEBOOK_NAME}", "2>&1 1>log.out"] 
+    args: ["nbconvert", "--to", "notebook", "--execute", "${_NOTEBOOK_NAME}"] #"2>&1 1>log.out"] 
   
   # Check directory
   - name: bash
@@ -42,4 +42,4 @@ serviceAccount: "sa-ds-mf-tf-pv002@rax-datascience-dev.iam.gserviceaccount.com"
 artifacts:
   objects:
     location: 'gs://${_ARTIFACT_BUCKET}/'
-    paths: ['${_NOTEBOOK_NAME}', '*.out']
+    paths: ['${_NOTEBOOK_NAME}']
