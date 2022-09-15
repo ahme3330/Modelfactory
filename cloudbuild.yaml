@@ -19,7 +19,9 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'gcloud'
     # gcloud compute regions list
-    args: ['compute','regions', 'list']
+    # gcloud config get compute/zone
+    # args: ['compute','regions', 'list']
+    args: ['config','get', 'compute/zone']
 
   # Run nbconvert library to convert notebook into Python script
   - name: python
