@@ -21,6 +21,9 @@ steps:
     # gcloud compute regions list
     # gcloud config get compute/zone
     # args: ['compute','regions', 'list']
+    # gcloud compute project-info add-metadata \
+    # --metadata google-compute-default-region=europe-west1,google-compute-default-zone=europe-west1-b
+    # args: ['compute','project-info', 'add-metadata', '\', '--metadata', 'google-compute-default-region=europe-west1,google-compute-default-zone=europe-west1-b']
     args: ['config','get', 'compute/zone']
 
   # Run nbconvert library to convert notebook into Python script
