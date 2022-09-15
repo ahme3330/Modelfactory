@@ -29,7 +29,8 @@ steps:
   # Run nbconvert library to convert notebook into Python script
   - name: python
     entrypoint: /builder/home/.local/bin/jupyter
-    args: ["nbconvert", "--to", "notebook", "--execute", "${_NOTEBOOK_NAME}"] #"2>&1 1>log.out"] 
+    # nbconvert --to notebook --execute NOTEBOOK_NAME
+    args: ["nbconvert", "--to", "notebook", "--execute", "--allow-errors", "${_NOTEBOOK_NAME}"] #"2>&1 1>log.out"] 
   
   # Check directory
   - name: bash
