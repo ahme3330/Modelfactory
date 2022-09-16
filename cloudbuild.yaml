@@ -5,9 +5,9 @@ steps:
     args: ["install", "-r", "requirements.txt", "--user"]
 
   # Inspect python container
+  # Will output /builder/home/.local/bin/
   - name: python
     entrypoint: pwd
-    # Will output /builder/home/.local/bin/
 
   # Check directory
   - name: bash
@@ -16,22 +16,22 @@ steps:
       - |
         ls
 
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'gcloud'
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #  entrypoint: 'gcloud'
     # gcloud compute regions list
     # gcloud config get compute/zone
     # args: ['compute','regions', 'list']
     # gcloud compute project-info add-metadata \
     # --metadata google-compute-default-region=europe-west1,google-compute-default-zone=europe-west1-b
     # args: ['compute','project-info', 'add-metadata', '\', '--metadata', 'google-compute-default-region=europe-west1,google-compute-default-zone=europe-west1-b']
-    args: ['config','get', 'compute/zone']
+  #  args: ['config','get', 'compute/zone']
 
   # Run nbconvert library to convert notebook into Python script
   - name: python
     entrypoint: /builder/home/.local/bin/jupyter
     # nbconvert --to notebook --execute NOTEBOOK_NAME
-    args: ["nbconvert", "--to", "notebook", "--execute", "${_NOTEBOOK_NAME}"]
     # args: ["nbconvert", "--to", "notebook", "--execute", "--allow-errors", "${_NOTEBOOK_NAME}", "2>&1 1>log.out"] 
+    args: ["nbconvert", "--to", "notebook", "--execute", "${_NOTEBOOK_NAME}"]
 
   # Check directory
   - name: bash
@@ -45,10 +45,10 @@ steps:
 #    _NOTEBOOK_NAME: inventory_pipeline.ipynb           # default value
 #    _ARTIFACT_BUCKET: rax-datascience-dev-modelfactory # default value
 
-# options:
 serviceAccount: "40046533665-compute@developer.gserviceaccount.com"
-# 40046533665-compute@developer.gserviceaccount.com
-# sa-ds-mf-tf-pv002@rax-datascience-dev.iam.gserviceaccount.com
+# Client service account:    40046533665-compute@developer.gserviceaccount.com
+# Our service account:       sa-ds-mf-tf-pv002@rax-datascience-dev.iam.gserviceaccount.com
+# options:
 #    dynamic_substitutions: true
 
 artifacts:
