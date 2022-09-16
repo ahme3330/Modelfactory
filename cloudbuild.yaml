@@ -30,8 +30,8 @@ steps:
   - name: python
     entrypoint: /builder/home/.local/bin/jupyter
     # nbconvert --to notebook --execute NOTEBOOK_NAME
-    args: ["nbconvert", "--to", "notebook", "--execute", "--allow-errors", "${_NOTEBOOK_NAME}"] 
-    # args: ["nbconvert", "--to", "notebook", "--execute", "${_NOTEBOOK_NAME}"] #"2>&1 1>log.out"] 
+    args: ["nbconvert", "--to", "notebook", "--execute", "${_NOTEBOOK_NAME}"]
+    # args: ["nbconvert", "--to", "notebook", "--execute", "--allow-errors", "${_NOTEBOOK_NAME}", "2>&1 1>log.out"] 
 
   # Check directory
   - name: bash
@@ -53,6 +53,6 @@ serviceAccount: "40046533665-compute@developer.gserviceaccount.com"
 
 artifacts:
   objects:
-    location: 'gs://${_ARTIFACT_BUCKET}/'
+    location: 'gs://${_ARTIFACT_BUCKET}/Ahmed-test/'
     # paths: ['${_NOTEBOOK_NAME}']
     paths: ['forecast_eval_component.yaml', 'inventory_pipeline.ipynb', 'inventory_pipeline.nbconvert.ipynb', 'send_gmail_component.yaml', 'sql_query_component.yaml', 'tab_forecast_pipeline.json']
